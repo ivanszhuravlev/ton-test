@@ -1,11 +1,10 @@
 import {flow, Instance, types} from 'mobx-state-tree';
-// import { getChainsList } from "../features/chain/api/get";
 import {RootStoreModel} from './AppStore';
 import {PhotoModel} from './shared';
 
 const state = {
   photos: types.maybe(types.array(PhotoModel)),
-  isLoading: types.boolean.create(false),
+  isLoading: types.optional(types.boolean, false),
 };
 
 export const LibraryStore = types
@@ -28,4 +27,4 @@ export const LibraryStore = types
 export type ILibraryStore = Instance<typeof LibraryStore>;
 export type MapLibraryStore = (
   rootStore: RootStoreModel,
-) => {chainsStore: ILibraryStore};
+) => {libraryStore: ILibraryStore};

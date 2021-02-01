@@ -5,14 +5,14 @@ import {getPhotos} from '../feature/PhotosList/api/getPhotos';
 
 const state = {
   photos: types.array(PhotoModel),
-  isLoading: types.boolean.create(false),
-  page: types.number.create(1),
+  isLoading: types.optional(types.boolean, false),
+  page: types.optional(types.number, 1),
 };
 
 export const PhotosStore = types
   .model('PhotosStore', state)
   .actions((self) => ({
-    getChains: flow(function* () {
+    getPhotos: flow(function* () {
       self.isLoading = true;
       try {
         self.photos.push(yield getPhotos(self.page));
@@ -41,4 +41,4 @@ export const PhotosStore = types
 export type IPhotosStore = Instance<typeof PhotosStore>;
 export type MapPhotosStore = (
   rootStore: RootStoreModel,
-) => {chainsStore: IPhotosStore};
+) => {photosStore: IPhotosStore};
