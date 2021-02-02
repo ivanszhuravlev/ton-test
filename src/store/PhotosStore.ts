@@ -1,4 +1,4 @@
-import {flow, Instance, types} from 'mobx-state-tree';
+import {flow, Instance, types, cast} from 'mobx-state-tree';
 import {RootStoreModel} from './AppStore';
 import {PhotoModel} from './shared';
 import {getPhotos} from '../feature/PhotosList/api/getPhotos';
@@ -15,7 +15,8 @@ export const PhotosStore = types
     getPhotos: flow(function* () {
       self.isLoading = true;
       try {
-        self.photos.push(yield getPhotos(self.page));
+        const photos = yield getPhotos(self.page);
+        self.photos = cast([...self.photos.values(), ...photos]);
         self.page += 1;
         self.isLoading = false;
       } catch (error) {
@@ -23,22 +24,6 @@ export const PhotosStore = types
       }
     }),
   }))
-  .views((self) => ({
-    // get currentChain() {
-    //   if (!self.chains) {
-    //     return { id: "", name: "" };
-    //   }
-    //
-    //   return (
-    //     self.chains.find(({ id }) => id === self.currentChainId) || {
-    //       id: "",
-    //       name: "",
-    //     }
-    //   );
-    // },
-  }));
+  .views((self) => ({}));
 
 export type IPhotosStore = Instance<typeof PhotosStore>;
-export type MapPhotosStore = (
-  rootStore: RootStoreModel,
-) => {photosStore: IPhotosStore};

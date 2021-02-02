@@ -1,5 +1,4 @@
-import {flow, Instance, types} from 'mobx-state-tree';
-import {RootStoreModel} from './AppStore';
+import {Instance, types} from 'mobx-state-tree';
 import {PhotoModel} from './shared';
 
 const state = {
@@ -9,22 +8,6 @@ const state = {
 
 export const LibraryStore = types
   .model('LibraryStore', state)
-  .views((self) => ({
-    // get currentChain() {
-    //   if (!self.chains) {
-    //     return { id: "", name: "" };
-    //   }
-    //
-    //   return (
-    //     self.chains.find(({ id }) => id === self.currentChainId) || {
-    //       id: "",
-    //       name: "",
-    //     }
-    //   );
-    // },
-  }));
+  .views((self) => ({}));
 
 export type ILibraryStore = Instance<typeof LibraryStore>;
-export type MapLibraryStore = (
-  rootStore: RootStoreModel,
-) => {libraryStore: ILibraryStore};

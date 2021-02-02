@@ -1,8 +1,7 @@
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import {createStore, StoreProvider} from './src/store/AppStore';
 import {RootStack} from './src/navigation/RootStack';
-import {PhotosListScreen} from './src/feature/PhotosList/PhotosListScreen';
 import {ThemeProvider} from 'styled-components/native';
 import {styled, THEME} from './src/styled/styled';
 import {NavigationContainer} from '@react-navigation/native';
@@ -14,7 +13,6 @@ const App = () => {
     <StoreProvider value={rootStore}>
       <ThemeProvider theme={THEME}>
         <SafeAreaViewStyled>
-          {/*<StatusBar barStyle="light-content" />*/}
           <NavigationContainer>
             <RootStack />
           </NavigationContainer>

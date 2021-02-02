@@ -9,7 +9,9 @@ import {getThemeColors} from './colors';
 export const THEME = {
   colors: getThemeColors(),
   constants: {},
-  borderRadius: {},
+  borderRadius: {
+    card: 8,
+  },
 };
 
 export type ITheme = typeof THEME;
