@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useLayoutEffect} from 'react';
 import {Header} from '../../components/Header/Header';
 import {styled} from '../../styled/styled';
 import {TextButton} from '../../components/TextButton/TextButton';
@@ -9,6 +9,7 @@ import {IPhotosStore} from '../../store/PhotosStore';
 import {PhotosSwiper} from './PhotosSwiper';
 import {useSwiper} from './useSwiper';
 import {Footer} from '../../components/Footer/Footer';
+import {InteractionManager} from 'react-native';
 
 type MappedStore = {
   photosStore: IPhotosStore;
@@ -22,10 +23,15 @@ export const PhotosListScreen = observer(() => {
   const {transX, handlePan, swiperState} = useSwiper();
   const {photosStore} = useInjectStore(mapStore);
 
-  const getPhotos = () => photosStore.getPhotos();
+  const getInitialPhotos = useCallback(
+    () => !photosStore.photos.length && photosStore.getPhotos(),
+    [photosStore.photos.length],
+  );
 
-  useEffect(() => {
-    getPhotos();
+  const init = () => InteractionManager.runAfterInteractions(getInitialPhotos);
+
+  useLayoutEffect(() => {
+    init();
   }, []);
 
   const onUndo = useCallback(() => {}, []);

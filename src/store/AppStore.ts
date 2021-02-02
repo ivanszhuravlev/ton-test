@@ -39,6 +39,12 @@ export const createStore = (): RootStoreModel => {
     blacklist: [],
   });
 
+  persist('photosStore', photosStore, {
+    storage: AsyncStorage,
+    jsonify: true,
+    blacklist: [],
+  });
+
   return rootStore;
 };
 
