@@ -11,7 +11,13 @@ export const PhotoModel = types.model('PhotoModel', {
   }),
   img_src: types.string,
   earth_date: types.string,
-  // rover: types.,
+  rover: types.model({
+    id: types.identifierNumber,
+    name: types.string,
+    landing_date: types.string,
+    launch_date: types.string,
+    status: types.string,
+  }),
 });
 
 export type IPhotoModel = Instance<typeof PhotoModel>;
