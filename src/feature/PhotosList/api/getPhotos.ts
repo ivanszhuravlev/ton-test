@@ -1,5 +1,6 @@
 import {api} from '../../../api/api';
 
-export const getPhotos = (page: number) => {
-  return api(`/rovers/curiosity/photos?sol=1000&page=${page}`);
+export const getPhotos = async (page: number) => {
+  const {photos} = await api(`/rovers/curiosity/photos?sol=1000&page=${page}`);
+  return photos;
 };

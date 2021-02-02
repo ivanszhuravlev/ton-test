@@ -8,8 +8,11 @@ interface IParams {
   body?: Object;
 }
 
-export const api = (route: string, params: IParams = {method: 'GET'}) =>
-  fetch(getRoute(route), {
+export const api = async (route: string, params: IParams = {method: 'GET'}) => {
+  const response = await fetch(getRoute(route), {
     method: params.method,
     body: JSON.stringify(params.body),
   });
+
+  return await response.json();
+};
