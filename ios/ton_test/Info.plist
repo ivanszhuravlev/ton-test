@@ -53,5 +53,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>IBMPlexSans-Medium.ttf</string>
+		<string>IBMPlexSans-Regular.ttf</string>
+		<string>icomoon.ttf</string>
+	</array>
 </dict>
 </plist>

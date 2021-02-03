@@ -1,7 +1,5 @@
 import React, {useCallback, useEffect, useLayoutEffect} from 'react';
 import {Header} from '../../components/Header/Header';
-import {styled} from '../../styled/styled';
-import {TextButton} from '../../components/TextButton/TextButton';
 import {STRINGS} from '../../strings';
 import {observer} from 'mobx-react-lite';
 import {MapStore, useInjectStore} from '../../store/useInjectStore';
@@ -9,6 +7,11 @@ import {IPhotosStore} from '../../store/PhotosStore';
 import {PhotosSwiper} from './PhotosSwiper';
 import {InteractionManager} from 'react-native';
 import {ILibraryStore} from '../../store/LibraryStore';
+import {
+  LeftIcon,
+  RightIcon,
+  PhotosListScreenContainer,
+} from './PhotosListScreen.styles';
 
 type MappedStore = {
   photosStore: IPhotosStore;
@@ -44,29 +47,26 @@ export const PhotosListScreen = observer(() => {
   };
 
   const renderLeftButton = useCallback(
-    () => <TextButton onPress={onUndo} text={STRINGS['Home.back']} />,
+    () => <LeftIcon>{STRINGS['Home.back']}</LeftIcon>,
     [],
   );
-  const renderRightButton = useCallback(() => null, []);
+  const renderRightButton = useCallback(
+    () => <RightIcon name={'heart'} size={24} />,
+    [],
+  );
 
   useEffect(() => {}, []);
 
   return (
-    <Container>
+    <PhotosListScreenContainer>
       <Header
-        renderLeftButton={renderLeftButton}
-        renderRightButton={renderRightButton}
+        renderLeftIcon={renderLeftButton}
+        renderRightIcon={renderRightButton}
         title={STRINGS['Home.title']}
       />
       {photos.length ? (
         <PhotosSwiper photos={photos} onLeft={onLeft} onRight={onRight} />
       ) : null}
-    </Container>
+    </PhotosListScreenContainer>
   );
 });
-
-const Container = styled.View`
-  width: 100%;
-  height: 100%;
-  background-color: ${({theme}) => theme.colors.background};
-`;

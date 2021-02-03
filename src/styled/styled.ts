@@ -12,6 +12,15 @@ export const THEME = {
   borderRadius: {
     card: 8,
   },
+  fonts: {
+    medium: 'IBMPlexSans-Medium',
+    regular: 'IBMPlexSans',
+  },
+  fontSize: {
+    button: 16,
+    info: 14,
+    title: 18,
+  },
 };
 
 export type ITheme = typeof THEME;

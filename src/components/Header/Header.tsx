@@ -2,19 +2,28 @@ import React from 'react';
 import {styled} from '../../styled/styled';
 
 interface Props {
-  renderLeftButton: () => React.ReactNode;
-  renderRightButton: () => React.ReactNode;
+  renderLeftIcon: () => React.ReactNode;
+  renderRightIcon: () => React.ReactNode;
   title: string;
 }
 
-export const Header = ({renderLeftButton, title, renderRightButton}: Props) => {
+const hitSlop = {
+  bottom: 12,
+  left: 12,
+  right: 12,
+  top: 12,
+};
+
+export const Header = ({renderLeftIcon, title, renderRightIcon}: Props) => {
   return (
     <Container>
-      <LeftButtonContainer>{renderLeftButton()}</LeftButtonContainer>
+      <LeftHeaderButton hitSlop={hitSlop}>{renderLeftIcon()}</LeftHeaderButton>
       <TitleContainer>
         <Title>{title}</Title>
       </TitleContainer>
-      <RightButtonContainer>{renderRightButton()}</RightButtonContainer>
+      <RightHeaderButton hitSlop={hitSlop}>
+        {renderRightIcon()}
+      </RightHeaderButton>
     </Container>
   );
 };
@@ -25,6 +34,8 @@ const Container = styled.View`
   height: 56px;
   flex-direction: row;
   align-items: center;
+  padding-vertical: 8px;
+  padding-horizontal: 16px;
 `;
 
 const TitleContainer = styled.View`
@@ -33,14 +44,18 @@ const TitleContainer = styled.View`
 
 const Title = styled.Text`
   text-align: center;
+  font-family: ${({theme}) => theme.fonts.medium};
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  color: ${({theme}) => theme.colors.text};
 `;
 
-const LeftButtonContainer = styled.View`
-  color: ${({theme}) => theme.colors.highlight1};
-`;
-
-const RightButtonContainer = styled.View`
-  color: ${({theme}) => theme.colors.highlight1};
+const LeftHeaderButton = styled.TouchableOpacity`
   height: 100%;
-  width: auto;
+  justify-content: center;
+`;
+
+const RightHeaderButton = styled.TouchableOpacity`
+  height: 100%;
+  justify-content: center;
 `;

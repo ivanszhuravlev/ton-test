@@ -22,6 +22,7 @@ export const Footer = ({
           <LeftButton
             highlighted={leftHighlighted}
             disabled={rightHighlighted}
+            iconName={'thumbs-down'}
           />
         </Touchable>
       </Half>
@@ -30,6 +31,7 @@ export const Footer = ({
           <RightButton
             highlighted={rightHighlighted}
             disabled={leftHighlighted}
+            iconName={'thumbs-up'}
           />
         </Touchable>
       </Half>
@@ -41,6 +43,7 @@ const Container = styled.View`
   height: 56px;
   width: 100%;
   flex-direction: row;
+  padding-horizontal: 16px;
 `;
 
 const Half = styled.View`
@@ -51,6 +54,12 @@ const Half = styled.View`
 
 const Touchable = styled.TouchableOpacity``;
 
-const LeftButton = styled(Button)``;
+const LeftButton = styled(Button)`
+  background-color: ${({theme}) => theme.colors.highlight2};
+  padding-top: 2px;
+`;
 
-const RightButton = styled(Button)``;
+const RightButton = styled(Button)`
+  background-color: ${({theme}) => theme.colors.highlight1};
+  padding-bottom: 2px;
+`;

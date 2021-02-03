@@ -17,6 +17,9 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* ton_testTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ton_testTests.m */; };
 		428420BB47EE7F7ECCC9E780 /* libPods-ton_test-ton_testTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7282A86D0EFF77FDB5B4146B /* libPods-ton_test-ton_testTests.a */; };
+		49F11A1F25CB0A480016586E /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F11A1D25CB0A470016586E /* IBMPlexSans-Regular.ttf */; };
+		49F11A2025CB0A480016586E /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F11A1E25CB0A480016586E /* IBMPlexSans-Medium.ttf */; };
+		49F11A2625CB102A0016586E /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F11A2525CB10270016586E /* icomoon.ttf */; };
 		4D1F33733EE3E1D235DA4CBB /* libPods-ton_test-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B964B48EB2CEA11D4A300F04 /* libPods-ton_test-tvOS.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		926C10072B8CF0DEE54AEA08 /* libPods-ton_test-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E24D5EDA9F69758B7E1857 /* libPods-ton_test-tvOSTests.a */; };
@@ -54,6 +57,9 @@
 		1BBDC2BE5858C01131C396A9 /* libPods-ton_test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ton_test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* ton_test-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ton_test-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* ton_test-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ton_test-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49F11A1D25CB0A470016586E /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
+		49F11A1E25CB0A480016586E /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
+		49F11A2525CB10270016586E /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
 		4FCE66B3C672D095504DEED4 /* Pods-ton_test-ton_testTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ton_test-ton_testTests.debug.xcconfig"; path = "Target Support Files/Pods-ton_test-ton_testTests/Pods-ton_test-ton_testTests.debug.xcconfig"; sourceTree = "<group>"; };
 		63E24D5EDA9F69758B7E1857 /* libPods-ton_test-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ton_test-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FDDDACCBC22A3165DA01807 /* Pods-ton_test-ton_testTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ton_test-ton_testTests.release.xcconfig"; path = "Target Support Files/Pods-ton_test-ton_testTests/Pods-ton_test-ton_testTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +155,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		49F11A1C25CB0A2E0016586E /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				49F11A1E25CB0A480016586E /* IBMPlexSans-Medium.ttf */,
+				49F11A1D25CB0A470016586E /* IBMPlexSans-Regular.ttf */,
+				49F11A2525CB10270016586E /* icomoon.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		6A28DA7614A6D2E550E11BCB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,7 +177,6 @@
 				F2E791614178F5E7EE21CD07 /* Pods-ton_test-tvOSTests.debug.xcconfig */,
 				8765681EF159DA1E151BDA3F /* Pods-ton_test-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -175,6 +190,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				49F11A1C25CB0A2E0016586E /* fonts */,
 				13B07FAE1A68108700A75B9A /* ton_test */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ton_testTests */,
@@ -340,7 +356,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F11A2625CB102A0016586E /* icomoon.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				49F11A1F25CB0A480016586E /* IBMPlexSans-Regular.ttf in Resources */,
+				49F11A2025CB0A480016586E /* IBMPlexSans-Medium.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
