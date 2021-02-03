@@ -1,5 +1,5 @@
-import React, {memo, useEffect, useRef} from 'react';
-import Animated, {Easing, timing} from 'react-native-reanimated';
+import React, {memo} from 'react';
+import Animated from 'react-native-reanimated';
 import {StyleProp} from 'react-native';
 import {styled} from '../../styled/styled';
 import {useButtonAnimation} from './useButtonAnimation';
@@ -31,6 +31,8 @@ const ButtonStyled = styled(Animated.View)`
 
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 16px 24px ${({theme}) => theme.colors.shadowBig};
+  elevation: 4;
 `;
 
 const CustomIconStyled = styled(CustomIcon)`

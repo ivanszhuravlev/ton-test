@@ -20,6 +20,7 @@ export const THEME = {
     button: 16,
     info: 14,
     title: 18,
+    titleBig: 18,
   },
 };
 

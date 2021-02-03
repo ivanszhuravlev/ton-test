@@ -29,6 +29,10 @@ export const PhotosStore = types
       } catch (error) {}
     }),
   }))
-  .views((self) => ({}));
+  .views((self) => ({
+    get cardsCount() {
+      return self.photos.length;
+    },
+  }));
 
 export type IPhotosStore = Instance<typeof PhotosStore>;

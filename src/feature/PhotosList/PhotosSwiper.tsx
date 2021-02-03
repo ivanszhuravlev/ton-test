@@ -8,15 +8,18 @@ import {Footer} from '../../components/Footer/Footer';
 import {useSwiper} from './useSwiper';
 import {AnimatedContainer} from './AnimatedContainer';
 import {AdditionalBlock} from './AdditionalBlock';
+import {Loader} from '../../components/Loader/Loader';
 
 interface Props {
   photos: IPhotoModel[];
   onLeft: () => void;
   onRight: () => void;
+  isLoading: boolean;
 }
 
-export const PhotosSwiper = ({photos, onLeft, onRight}: Props) => {
-  const photosChangeFlag = photos[0].id;
+export const PhotosSwiper = ({photos, onLeft, onRight, isLoading}: Props) => {
+  const showCards = photos.length && !isLoading;
+  const photosChangeFlag = photos[0]?.id;
   const [safePhotos, setSafePhotos] = useState(photos);
   const moveState = useValue(0);
 
@@ -57,7 +60,15 @@ export const PhotosSwiper = ({photos, onLeft, onRight}: Props) => {
   const animatedStyle = {transform: [{translateX: transX}]};
 
   const renderItem = (item: IPhotoModel, index: number) => {
-    const Photo = <PhotoCardStyled source={{uri: item.img_src}} />;
+    const Photo = (
+      <PhotoCardStyled
+        source={{uri: item.img_src}}
+        camera={item.camera.full_name}
+        rover={item.rover.name}
+        date={item.rover.landing_date}
+      />
+    );
+
     switch (index) {
       case 3:
         return (
@@ -70,8 +81,8 @@ export const PhotosSwiper = ({photos, onLeft, onRight}: Props) => {
       case 2:
         return (
           <AnimatedContainer
-            initialTop={32}
-            initialHor={32}
+            initialTop={16}
+            initialHor={16}
             moveState={moveState}>
             {Photo}
           </AnimatedContainer>
@@ -79,8 +90,8 @@ export const PhotosSwiper = ({photos, onLeft, onRight}: Props) => {
       case 1:
         return (
           <AnimatedContainer
-            initialTop={16}
-            initialHor={48}
+            initialTop={0}
+            initialHor={32}
             delay={0.7}
             moveState={moveState}>
             {Photo}
@@ -99,10 +110,12 @@ export const PhotosSwiper = ({photos, onLeft, onRight}: Props) => {
 
   return (
     <Container>
-      {renderCards()}
+      {showCards ? renderCards() : <Loader />}
       <Footer
         leftHighlighted={swiperState === 'left'}
         rightHighlighted={swiperState === 'right'}
+        onLeft={onLeft}
+        onRight={onRight}
       />
     </Container>
   );
@@ -111,8 +124,8 @@ export const PhotosSwiper = ({photos, onLeft, onRight}: Props) => {
 const Container = styled.View``;
 
 const FirstContainer = styled(Animated.View)`
-  padding-top: 48px;
-  padding-horizontal: 16px;
+  padding-top: 32px;
+  padding-horizontal: 0px;
 `;
 
 const PhotoCardStyled = styled(PhotoCard)`

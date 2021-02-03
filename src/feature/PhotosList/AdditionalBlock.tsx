@@ -11,7 +11,7 @@ interface Props {
 export const AdditionalBlock = ({children, moveState, delay = 0}: Props) => {
   const paddingTop = moveState.interpolate({
     inputRange: [0, delay, 1],
-    outputRange: [32, 32, 16],
+    outputRange: [16, 16, 0],
   });
 
   const animatedStyle = {

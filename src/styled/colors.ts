@@ -6,7 +6,11 @@ type Colors =
   | 'highlight2'
   | 'disabled'
   | 'text'
-  | 'textContrast';
+  | 'textContrast'
+  | 'textGrey'
+  | 'gradientDark'
+  | 'gradientLight'
+  | 'shadowBig';
 
 type IColorsMap = {
   [key in Colors]: string;
@@ -19,6 +23,10 @@ const COLORS_LIGHT: IColorsMap = {
   disabled: '#CFD8DC',
   text: '#102027',
   textContrast: '#ffffff',
+  textGrey: '#727C81',
+  gradientDark: 'rgba(0, 0, 0, 0.8)',
+  gradientLight: 'rgba(235, 87, 87, 0)',
+  shadowBig: 'rgba(16, 32, 39, 0.16)',
 };
 
 const COLORS_DARK: IColorsMap = {
@@ -28,6 +36,10 @@ const COLORS_DARK: IColorsMap = {
   disabled: '#CFD8DC',
   text: '#102027',
   textContrast: '#ffffff',
+  textGrey: '#727C81',
+  gradientDark: 'rgba(0, 0, 0, 0.8)',
+  gradientLight: 'rgba(235, 87, 87, 0)',
+  shadowBig: 'rgba(16, 32, 39, 0.16)',
 };
 
 const getIsDarkTheme = () => Appearance.getColorScheme() === 'dark';

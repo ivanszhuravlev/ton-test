@@ -4,6 +4,8 @@ import {styled} from '../../styled/styled';
 interface Props {
   renderLeftIcon: () => React.ReactNode;
   renderRightIcon: () => React.ReactNode;
+  onLeft?: () => void;
+  onRight?: () => void;
   title: string;
 }
 
@@ -14,14 +16,22 @@ const hitSlop = {
   top: 12,
 };
 
-export const Header = ({renderLeftIcon, title, renderRightIcon}: Props) => {
+export const Header = ({
+  renderLeftIcon,
+  title,
+  renderRightIcon,
+  onLeft,
+  onRight,
+}: Props) => {
   return (
     <Container>
-      <LeftHeaderButton hitSlop={hitSlop}>{renderLeftIcon()}</LeftHeaderButton>
+      <LeftHeaderButton hitSlop={hitSlop} onPress={onLeft}>
+        {renderLeftIcon()}
+      </LeftHeaderButton>
       <TitleContainer>
         <Title>{title}</Title>
       </TitleContainer>
-      <RightHeaderButton hitSlop={hitSlop}>
+      <RightHeaderButton hitSlop={hitSlop} onPress={onRight}>
         {renderRightIcon()}
       </RightHeaderButton>
     </Container>

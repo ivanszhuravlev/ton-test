@@ -1,6 +1,7 @@
 import React from 'react';
 import {styled} from '../../styled/styled';
 import {Button} from './Button';
+import {Status} from './components/Status';
 
 interface Props {
   leftHighlighted: boolean;
@@ -17,6 +18,7 @@ export const Footer = ({
 }: Props) => {
   return (
     <Container>
+      <Status />
       <Half>
         <Touchable onPress={onLeft}>
           <LeftButton
@@ -43,7 +45,6 @@ const Container = styled.View`
   height: 56px;
   width: 100%;
   flex-direction: row;
-  padding-horizontal: 16px;
 `;
 
 const Half = styled.View`

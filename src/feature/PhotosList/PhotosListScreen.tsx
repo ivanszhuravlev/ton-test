@@ -55,18 +55,21 @@ export const PhotosListScreen = observer(() => {
     [],
   );
 
-  useEffect(() => {}, []);
-
   return (
-    <PhotosListScreenContainer>
+    <>
       <Header
         renderLeftIcon={renderLeftButton}
         renderRightIcon={renderRightButton}
         title={STRINGS['Home.title']}
       />
-      {photos.length ? (
-        <PhotosSwiper photos={photos} onLeft={onLeft} onRight={onRight} />
-      ) : null}
-    </PhotosListScreenContainer>
+      <PhotosListScreenContainer>
+        <PhotosSwiper
+          photos={photos}
+          onLeft={onLeft}
+          onRight={onRight}
+          isLoading={photosStore.isLoading}
+        />
+      </PhotosListScreenContainer>
+    </>
   );
 });
