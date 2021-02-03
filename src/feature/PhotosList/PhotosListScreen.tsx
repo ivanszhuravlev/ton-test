@@ -26,10 +26,11 @@ const mapStore: MapStore<MappedStore> = (rootStore) => ({
 export const PhotosListScreen = observer(() => {
   const {photosStore, libraryStore} = useInjectStore(mapStore);
   const photos = photosStore.photos.slice(0, 4).reverse();
+  const photosCount = photosStore.cardsCount;
   const [currentPhoto] = photos;
 
   const getInitialPhotos = useCallback(
-    () => !photosStore.photos.length && photosStore.getPhotos(),
+    () => photosCount && photosStore.getPhotos(),
     [photosStore.photos.length],
   );
 
@@ -38,6 +39,12 @@ export const PhotosListScreen = observer(() => {
   useLayoutEffect(() => {
     init();
   }, []);
+
+  useEffect(() => {
+    if (photosCount && photosCount <= 5) {
+      photosStore.getPhotos();
+    }
+  }, [photos.length]);
 
   const onUndo = useCallback(() => {}, []);
   const onLeft = () => photosStore.removePhoto();

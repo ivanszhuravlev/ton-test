@@ -28,7 +28,7 @@ export const PhotosSwiper = ({photos, onLeft, onRight, isLoading}: Props) => {
   };
 
   useEffect(() => {
-    if (photos[0].id !== safePhotos[0].id) {
+    if (photos[0]?.id !== safePhotos[0]?.id) {
       moveCards();
       setTimeout(() => {
         resetState();
