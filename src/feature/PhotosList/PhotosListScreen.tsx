@@ -7,21 +7,23 @@ import {observer} from 'mobx-react-lite';
 import {MapStore, useInjectStore} from '../../store/useInjectStore';
 import {IPhotosStore} from '../../store/PhotosStore';
 import {PhotosSwiper} from './PhotosSwiper';
-import {useSwiper} from './useSwiper';
-import {Footer} from '../../components/Footer/Footer';
 import {InteractionManager} from 'react-native';
+import {ILibraryStore} from '../../store/LibraryStore';
 
 type MappedStore = {
   photosStore: IPhotosStore;
+  libraryStore: ILibraryStore;
 };
 
 const mapStore: MapStore<MappedStore> = (rootStore) => ({
   photosStore: rootStore.photosStore,
+  libraryStore: rootStore.libraryStore,
 });
 
 export const PhotosListScreen = observer(() => {
-  const {transX, handlePan, swiperState} = useSwiper();
-  const {photosStore} = useInjectStore(mapStore);
+  const {photosStore, libraryStore} = useInjectStore(mapStore);
+  const photos = photosStore.photos.slice(0, 4).reverse();
+  const [currentPhoto] = photos;
 
   const getInitialPhotos = useCallback(
     () => !photosStore.photos.length && photosStore.getPhotos(),
@@ -35,6 +37,12 @@ export const PhotosListScreen = observer(() => {
   }, []);
 
   const onUndo = useCallback(() => {}, []);
+  const onLeft = () => photosStore.removePhoto();
+  const onRight = () => {
+    libraryStore.addToLibrary(currentPhoto);
+    photosStore.removePhoto();
+  };
+
   const renderLeftButton = useCallback(
     () => <TextButton onPress={onUndo} text={STRINGS['Home.back']} />,
     [],
@@ -50,15 +58,9 @@ export const PhotosListScreen = observer(() => {
         renderRightButton={renderRightButton}
         title={STRINGS['Home.title']}
       />
-      <PhotosSwiper
-        photos={photosStore.photos.slice(0, 3)}
-        transX={transX}
-        handlePan={handlePan}
-      />
-      <Footer
-        leftHighlighted={swiperState === 'left'}
-        rightHighlighted={swiperState === 'right'}
-      />
+      {photos.length ? (
+        <PhotosSwiper photos={photos} onLeft={onLeft} onRight={onRight} />
+      ) : null}
     </Container>
   );
 });

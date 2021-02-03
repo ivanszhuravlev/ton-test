@@ -23,6 +23,11 @@ export const PhotosStore = types
         self.isLoading = false;
       }
     }),
+    removePhoto: flow(function* () {
+      try {
+        self.photos = cast(self.photos.slice(1));
+      } catch (error) {}
+    }),
   }))
   .views((self) => ({}));
 

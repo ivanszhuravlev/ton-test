@@ -27,7 +27,7 @@ const getConditions = (x: Animated.Node<number>, state: State) => ({
   complete: eq(state, State.END),
 });
 
-export const useSwiper = () => {
+export const useSwiper = (onLeft: () => void, onRight: () => void) => {
   const [swiperState, setSwiperState] = useState<SwiperState>('none');
   const transX = useRef(new Animated.Value(0)).current;
 
@@ -35,9 +35,21 @@ export const useSwiper = () => {
   const highlightRight = useCallback(() => setSwiperState('right'), []);
   const highlightNone = useCallback(() => setSwiperState('none'), []);
 
-  const resetState = () => timing(transX, moveConfigs.reset).start();
-  const moveRight = () => timing(transX, moveConfigs.right).start();
-  const moveLeft = () => timing(transX, moveConfigs.left).start();
+  const moveReset = () =>
+    timing(transX, {
+      duration: 100,
+      toValue: 0,
+      easing: Easing.inOut(Easing.ease),
+    }).start();
+  const moveNone = () => timing(transX, moveConfigs.none).start();
+  const moveRight = () => timing(transX, moveConfigs.right).start(onRight);
+  const moveLeft = () => timing(transX, moveConfigs.left).start(onLeft);
+
+  const resetState = () => {
+    setSwiperState('none');
+    transX.setValue(0);
+    // moveReset();
+  };
 
   const handlePan = useMemo(() => {
     return Animated.event([
@@ -57,7 +69,7 @@ export const useSwiper = () => {
             cond(wentRight, [call([], highlightRight)]),
             cond(wentLeft, [call([], highlightLeft)]),
             cond(wentNone, [call([], highlightNone)]),
-            cond(canceled, [call([], resetState)]),
+            cond(canceled, [call([], moveNone)]),
             cond(and(complete, wentRight), [call([], moveRight)]),
             cond(and(complete, wentLeft), [call([], moveLeft)]),
           ]);
@@ -66,5 +78,5 @@ export const useSwiper = () => {
     ]);
   }, [transX]);
 
-  return {transX, handlePan, swiperState};
+  return {transX, handlePan, swiperState, resetState};
 };
