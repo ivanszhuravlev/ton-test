@@ -1,7 +1,8 @@
-import React, {memo} from 'react';
+import React, {memo, useMemo} from 'react';
 import {styled, THEME} from '../../styled/styled';
 import {ImageProps} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {formatISO} from '../../utils/time';
 
 interface Props extends ImageProps {
   camera: string;
@@ -10,6 +11,8 @@ interface Props extends ImageProps {
 }
 
 export const PhotoCard = memo(({camera, rover, date, ...props}: Props) => {
+  const formattedDate = useMemo(() => formatISO(date), [date]);
+
   return (
     <CardContainer>
       <Image {...props} />
@@ -19,7 +22,7 @@ export const PhotoCard = memo(({camera, rover, date, ...props}: Props) => {
         end={{x: 0, y: 1}}>
         <Rover>{rover}</Rover>
         <Info>{camera}</Info>
-        <Info>{date}</Info>
+        <Info>{formattedDate}</Info>
       </Gradient>
     </CardContainer>
   );

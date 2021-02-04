@@ -60,9 +60,10 @@ export const PhotosSwiper = ({photos, onLeft, onRight, isLoading}: Props) => {
   const animatedStyle = {transform: [{translateX: transX}]};
 
   const renderItem = (item: IPhotoModel, index: number) => {
+    const source = {uri: item.img_src};
     const Photo = (
       <PhotoCardStyled
-        source={{uri: item.img_src}}
+        source={source}
         camera={item.camera.full_name}
         rover={item.rover.name}
         date={item.rover.landing_date}

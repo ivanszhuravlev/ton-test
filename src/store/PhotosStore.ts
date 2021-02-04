@@ -1,5 +1,11 @@
-import {flow, Instance, types, cast} from 'mobx-state-tree';
-import {RootStoreModel} from './AppStore';
+import {
+  flow,
+  Instance,
+  types,
+  cast,
+  getParent,
+  getSnapshot,
+} from 'mobx-state-tree';
 import {PhotoModel} from './shared';
 import {getPhotos} from '../feature/PhotosList/api/getPhotos';
 
@@ -16,22 +22,32 @@ export const PhotosStore = types
       self.isLoading = true;
       try {
         const photos = yield getPhotos(self.page);
-        self.photos = cast([...self.photos.values(), ...photos]);
+        self.photos = cast([...getSnapshot(self.photos), ...photos]);
         self.page += 1;
         self.isLoading = false;
       } catch (error) {
         self.isLoading = false;
       }
     }),
-    removePhoto: flow(function* () {
+    removePhoto: function () {
       try {
         self.photos = cast(self.photos.slice(1));
       } catch (error) {}
-    }),
+    },
+    likePhoto: function () {
+      try {
+        const {libraryStore} = getParent(self);
+        libraryStore.addToLibrary(getSnapshot(self.photos[0]));
+        self.photos = cast(self.photos.slice(1));
+      } catch (error) {}
+    },
   }))
   .views((self) => ({
     get cardsCount() {
       return self.photos.length;
+    },
+    get photosList() {
+      return self.photos.values();
     },
   }));
 

@@ -3,4 +3,5 @@ export const STRINGS = {
   'Home.back': 'Undo',
   'Status.downloading': 'Downloading',
   'Status.cards': 'cards',
+  'Library.title': 'Library',
 };
