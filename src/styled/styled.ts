@@ -8,7 +8,9 @@ import {getThemeColors} from './colors';
 
 export const THEME = {
   colors: getThemeColors(),
-  constants: {},
+  constants: {
+    headerHeight: 56,
+  },
   borderRadius: {
     card: 8,
   },

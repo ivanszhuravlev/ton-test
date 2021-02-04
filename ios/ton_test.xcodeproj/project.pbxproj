@@ -20,6 +20,7 @@
 		49F11A1F25CB0A480016586E /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F11A1D25CB0A470016586E /* IBMPlexSans-Regular.ttf */; };
 		49F11A2025CB0A480016586E /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F11A1E25CB0A480016586E /* IBMPlexSans-Medium.ttf */; };
 		49F11A2625CB102A0016586E /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F11A2525CB10270016586E /* icomoon.ttf */; };
+		49F11A9E25CC7B380016586E /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49F11A9D25CC7B380016586E /* icomoon.ttf */; };
 		4D1F33733EE3E1D235DA4CBB /* libPods-ton_test-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B964B48EB2CEA11D4A300F04 /* libPods-ton_test-tvOS.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		926C10072B8CF0DEE54AEA08 /* libPods-ton_test-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63E24D5EDA9F69758B7E1857 /* libPods-ton_test-tvOSTests.a */; };
@@ -59,7 +60,7 @@
 		2D02E4901E0B4A5D006451C7 /* ton_test-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ton_test-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49F11A1D25CB0A470016586E /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
 		49F11A1E25CB0A480016586E /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
-		49F11A2525CB10270016586E /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
+		49F11A9D25CC7B380016586E /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = icomoon.ttf; path = "../../../../Downloads/icomoon-v1.0 (3)/fonts/icomoon.ttf"; sourceTree = "<group>"; };
 		4FCE66B3C672D095504DEED4 /* Pods-ton_test-ton_testTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ton_test-ton_testTests.debug.xcconfig"; path = "Target Support Files/Pods-ton_test-ton_testTests/Pods-ton_test-ton_testTests.debug.xcconfig"; sourceTree = "<group>"; };
 		63E24D5EDA9F69758B7E1857 /* libPods-ton_test-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ton_test-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FDDDACCBC22A3165DA01807 /* Pods-ton_test-ton_testTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ton_test-ton_testTests.release.xcconfig"; path = "Target Support Files/Pods-ton_test-ton_testTests/Pods-ton_test-ton_testTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,7 +161,7 @@
 			children = (
 				49F11A1E25CB0A480016586E /* IBMPlexSans-Medium.ttf */,
 				49F11A1D25CB0A470016586E /* IBMPlexSans-Regular.ttf */,
-				49F11A2525CB10270016586E /* icomoon.ttf */,
+				49F11A9D25CC7B380016586E /* icomoon.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -356,7 +357,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49F11A2625CB102A0016586E /* icomoon.ttf in Resources */,
+				49F11A9E25CC7B380016586E /* icomoon.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				49F11A1F25CB0A480016586E /* IBMPlexSans-Regular.ttf in Resources */,
 				49F11A2025CB0A480016586E /* IBMPlexSans-Medium.ttf in Resources */,

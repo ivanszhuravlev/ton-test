@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.4",
     "@react-native-community/masked-view": "^0.1.10",
+    "lodash": "^4.17.20",
     "luxon": "^1.25.0",
     "mobx": "6.0.4",
     "mobx-react-lite": "3.1.6",
@@ -34,6 +35,8 @@
     "@react-navigation/native": "^5.9.2",
     "@react-navigation/stack": "^5.14.2",
     "@types/jest": "^25.2.3",
+    "@types/lodash": "^4.14.168",
+    "@types/luxon": "^1.25.1",
     "@types/react-native": "^0.63.2",
     "@types/react-native-vector-icons": "^6.4.6",
     "@types/react-test-renderer": "^16.9.2",
